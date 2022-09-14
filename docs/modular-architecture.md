@@ -40,6 +40,12 @@ We separate the `client`, `server`, and `api` crates because:
 - Clients and servers communicate via the API and share common types
 
 ## Refactoring Plan
+We can probably do the migration in 3 big steps:
 1. Define the interfaces in `core/*` with temporary adapter functions between the old and new types
+  - `fedimint-api` becomes `core/api` without too many changes
+  - `fedimint-core` will be eventually eliminated but can temporarily hold the old types and adapter functions
 2. Migrate server-side and all modules
+  - `fedimint` splits into `core/server` and `fedimint/server`
+  - `modules/*` splits into `<module>/server` and `<module>/api`
 3. Migrate client-side and all modules
+  - `client-lib` splits into `<module>/client`, `core/client`, and `fedimint/client`
