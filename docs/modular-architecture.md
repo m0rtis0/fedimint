@@ -49,3 +49,5 @@ We can probably do the migration in 3 big steps:
   - `modules/*` splits into `<module>/server` and `<module>/api`
 3. Migrate client-side and all modules
   - `client-lib` splits into `<module>/client`, `core/client`, and `fedimint/client`
+
+If necessary we can cheat by putting more things into `fedimint/client` and `fedimint/server` that will later be refactored into the `modules` and `core`.
